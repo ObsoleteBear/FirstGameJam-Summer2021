@@ -13,5 +13,13 @@ public class MovingPlatform : MonoBehaviour
     private void Start()
     {
         transform.position = points[startingPoint].position;
+
+    }
+    private void Update()
+    {
+        if (Vector2.Distance(transform.position, points[i].position) < 0.02f)
+        {
+
+        }
     }
 }
