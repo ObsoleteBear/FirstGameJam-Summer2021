@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float speed;
+    public int startingPoint;
+    public Transform[] points;
 
-    // Update is called once per frame
-    void Update()
+    private int i;
+
+    private void Start()
     {
-        
+        transform.position = points[startingPoint].position;
     }
 }
