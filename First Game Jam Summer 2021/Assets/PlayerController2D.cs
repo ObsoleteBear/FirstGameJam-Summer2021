@@ -35,9 +35,10 @@ public class PlayerController2D : MonoBehaviour
         {
             rb2D.velocity = new Vector2(-2, rb2D.velocity.y);
         }
-        else
+        else { 
             rb2D.velocity = new Vector2(0, rb2D.velocity.y);
-        transform.
+        }
+        // transform.
 
     }
 }
