@@ -29,15 +29,22 @@ public class PlayerController2D : MonoBehaviour
 
         if (Input.GetKey("d") || Input.GetKey("right"))
         {
-            rb2D.velocity = new Vector2(2, rb2D.velocity.y);
+            rb2D.velocity = new Vector2(3, rb2D.velocity.y);
+            transform.localScale = new Vector2(1, 1);
+
+
         }
         else if (Input.GetKey("a") || Input.GetKey("left"))
         {
-            rb2D.velocity = new Vector2(-2, rb2D.velocity.y);
+            rb2D.velocity = new Vector2(-3, rb2D.velocity.y);
+            transform.localScale = new Vector2(-1, 1);
+       
         }
         else { 
             rb2D.velocity = new Vector2(0, rb2D.velocity.y);
         }
+       
+        
         // transform.
 
     }
