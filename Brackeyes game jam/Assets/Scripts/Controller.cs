@@ -1,25 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Controller : MonoBehaviour
 {
-    private Rigidbody2D rb;
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    public float Speed = 5f;
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.D))
-        {
-            rb.AddForce(new Vector2(500f, 0f) * Time.deltaTime);
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            rb.AddForce(new Vector2(-500f, 0f) * Time.deltaTime);
-        }
+        Vector2 Userinput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        transform.Translate(Userinput * Speed * Time.deltaTime);
     }
 }
+
