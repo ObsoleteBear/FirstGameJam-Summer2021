@@ -27,6 +27,7 @@ public class Controller : MonoBehaviour
         if(Input.GetKey(KeyCode.D))
         {
             Application.OpenURL("twitch.tv/diamondsword_0");
+            Debug.Log("yes");
         }
     }
     
