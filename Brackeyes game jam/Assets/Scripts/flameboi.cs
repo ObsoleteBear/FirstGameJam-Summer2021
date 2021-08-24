@@ -3,25 +3,33 @@ using UnityEngine;
 public class flameboi : MonoBehaviour
 {
     public float flamepew = 0.2f;
-    public Transform mouth;
-    public GameObject flame;
-    private float timeuntillflame;
-    Controller cont;
-    private void Start()
-    {
-        cont = gameObject.GetComponent<Controller>();
+    public Controller cont;
+    public Collider2D FlameCol;
+    public SpriteRenderer FlameRend;
+    private void Awake()
+    {   
     }
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0) && timeuntillflame < Time.time)
+        if(Input.GetMouseButtonDown(0))
         {
             Shoot();
-            timeuntillflame = Time.time + flamepew;
+        }
+        if(Input.GetMouseButtonUp(0))
+        {
+            StopShoot();
         }
     }
    void Shoot()
     {
-        float angle = cont.isFacingRight ? 0f : 180f;
-        Instantiate(flame, mouth.position, Quaternion.Euler(new Vector3(0f, 0f, angle)));
+        FlameCol.enabled = true;
+        FlameRend.enabled = true;
+        cont.Speed = 3.5f;
+    }
+    void StopShoot()
+    {
+        FlameCol.enabled = false;
+        FlameRend.enabled = false;
+        cont.Speed = 7f;
     }
 }
