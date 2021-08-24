@@ -19,16 +19,7 @@ public class Controller : MonoBehaviour
 
         rb.velocity = Userinput * Speed;
 
-        if(Input.GetKey(KeyCode.A))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-
-        if(Input.GetKey(KeyCode.D))
-        {
-            Application.OpenURL("twitch.tv/diamondsword_0");
-            Debug.Log("yes");
-        }
+     
     }
     
 

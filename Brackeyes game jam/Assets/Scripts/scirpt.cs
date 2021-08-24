@@ -22,5 +22,9 @@ public class scirpt : MonoBehaviour
         {
             SceneManager.LoadScene(3);
         }
+        if (collision.collider.tag == "Arrow")
+        {
+            SceneManager.LoadScene(3);
+        }
     }
 }
