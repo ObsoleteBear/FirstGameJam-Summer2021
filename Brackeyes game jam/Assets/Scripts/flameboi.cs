@@ -15,11 +15,11 @@ public class flameboi : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0) && timeuntillflame < Time.time)
         {
-            Shoot();
+            PEW();
             timeuntillflame = Time.time + flamepew;
         }
     }
-   void Shoot()
+   void PEW()
     {
         float angle = cont.isFacingRight ? 0f : 180f;
         Instantiate(flame, mouth.position, Quaternion.Euler(new Vector3(0f, 0f, angle)));
