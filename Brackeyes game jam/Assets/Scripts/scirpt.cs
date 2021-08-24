@@ -1,11 +1,26 @@
-//C# Example (LookAtPoint.cs)
+using UnityEngine.SceneManagement;
 using UnityEngine;
 public class scirpt : MonoBehaviour
 {
-    public Vector3 lookAtPoint = Vector3.zero;
+    public float speed;
 
-    void Update()
+    private Transform target;
+
+    void Start ()
     {
-        transform.LookAt(lookAtPoint);
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
+
+    private void Update()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            SceneManager.LoadScene(3);
+        }
     }
 }
