@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class bulletboi : MonoBehaviour
+public class BulletMovement : MonoBehaviour
 {
     public float flameSpeed = 15f;
     public float no;

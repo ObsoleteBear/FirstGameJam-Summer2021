@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Arrow : MonoBehaviour
+public class ArrowShoot : MonoBehaviour
 {
     public float arrowpew = 0.2f;
     public Transform bow;
@@ -13,7 +13,7 @@ public class Arrow : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && timeuntillarrow < Time.time)
+        if (Input.GetKey(KeyCode.E) && timeuntillarrow < Time.time)
         {
             airw();
             timeuntillarrow = Time.time + arrowpew;
@@ -21,7 +21,7 @@ public class Arrow : MonoBehaviour
     }
     void airw()
     {
-        float angle = cont.isFacingRight ? 0f : 180f;
-        Instantiate(arrow, bow.position, Quaternion.Euler(new Vector3(0f, 0f, angle)));
+        
+        Instantiate(arrow, bow.position, Quaternion.Euler(new Vector3(0f, 0f)));
     }
 }
