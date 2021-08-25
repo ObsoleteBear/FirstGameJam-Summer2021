@@ -19,7 +19,7 @@ public class Dash : MonoBehaviour
         }
 
         rb.velocity = Vector2.zero;
-        if (Input.GetKey(KeyCode.Space) && dash)
+        if (Input.GetKey(KeyCode.E) && dash)
         {
             Vector2 mouseDirection = (Input.mousePosition - new Vector3(Screen.width / 2, Screen.height / 2)).normalized;
             rb.AddForce(mouseDirection * dashSpeed * Time.fixedDeltaTime);
