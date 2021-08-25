@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class flameboi : MonoBehaviour
+public class FlameBoi : MonoBehaviour
 {
     public float flamepew = 0.2f;
     public Controller cont;

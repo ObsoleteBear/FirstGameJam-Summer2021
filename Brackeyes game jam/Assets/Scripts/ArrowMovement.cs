@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class ArrowBoi : MonoBehaviour
+public class ArrowMovement : MonoBehaviour
 {
     public float arrowSpeed = 15f;
     public float blue = 1f;

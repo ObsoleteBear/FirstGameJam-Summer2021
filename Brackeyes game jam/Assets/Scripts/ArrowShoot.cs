@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Arrow : MonoBehaviour
+public class ArrowShoot : MonoBehaviour
 {
     public float arrowpew = 0.2f;
     public Transform bow;
