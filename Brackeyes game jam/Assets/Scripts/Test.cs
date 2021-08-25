@@ -6,6 +6,7 @@ public class Test : MonoBehaviour
 {
     public float Speed = 5f;
     [HideInInspector] Rigidbody2D rb;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
