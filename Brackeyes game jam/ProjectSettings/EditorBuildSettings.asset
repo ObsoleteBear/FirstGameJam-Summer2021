@@ -6,12 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Thomas Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Level 1.unity
+    guid: 066dd5c49b9e27b44849aa43f27042f6
   - enabled: 1
-    path: Assets/Scenes/Thomas Scenes/scene.unity
+    path: Assets/Scenes/Level 2.unity
+    guid: 9838d029c3a8a87448765b44f47de780
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: 868e1e45566f080408f76abed28bdc5b
+  - enabled: 1
+    path: Assets/Scenes/Level 4.unity
+    guid: f2cfad749d89b0741b4305f18dec2d78
+  - enabled: 1
+    path: Assets/Scenes/scene.unity
     guid: 4b62a8d3f2308724584691b27355fa91
   - enabled: 1
-    path: Assets/Scenes/Thomas Scenes/Level 2.unity
-    guid: 9838d029c3a8a87448765b44f47de780
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
