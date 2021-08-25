@@ -11,7 +11,7 @@ public class GoalScript : MonoBehaviour {
     {
         if (collision.collider.tag == "Player")
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
