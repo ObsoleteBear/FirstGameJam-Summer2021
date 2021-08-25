@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class script : MonoBehaviour
+public class amogus : MonoBehaviour
 {
     public float Speed = 5f;
     [HideInInspector] Rigidbody2D rb;
