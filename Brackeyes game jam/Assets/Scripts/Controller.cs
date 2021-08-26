@@ -14,9 +14,9 @@ public class Controller : MonoBehaviour
     {
         if (movementEnabled == true)
         {
-            Vector2 Userinput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            Vector2 UserInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-            rb.velocity = Userinput * Speed;
+            rb.velocity = UserInput * Speed;
         }
     }
 }

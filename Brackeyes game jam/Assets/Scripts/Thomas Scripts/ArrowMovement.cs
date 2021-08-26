@@ -8,14 +8,28 @@ public class ArrowMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = Vector2.right * arrowSpeed;
+        rb.velocity = gameObject.transform.right * arrowSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "potato")
+        if (collision.collider.tag == "Player" | collision.collider.tag == "PlayerAttack")
         {
-            SceneManager.LoadScene(3);
+
+        }else
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player" | collision.tag == "PlayerAttack" | collision.tag == "DoorTrigger")
+        {
+
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }

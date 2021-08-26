@@ -7,6 +7,7 @@ public class AbilityManager : MonoBehaviour
     public Rigidbody2D rb;
     public Vector2 UserInput;
     public Controller cont;
+    public Transform Rotator;
     //Ability Bools
     public bool Slash;
     public bool Dash;
@@ -41,15 +42,16 @@ public class AbilityManager : MonoBehaviour
     public List<string> CurrentAbilities;
     //Flame variables
     float FlameTimer;
+    //Slash variables
+    float SlashTimer;
     //Dash variables
     public bool DashForceAdded = false;
     public float DashSpeed;
     public float DashTimer;
+    //Arrow variables
+    public GameObject ArrowSpawn;
     void Start()
     {
-        randomRangeList = CurrentAbilities.Count;
-        randAbilityID = Random.Range(0, randomRangeList);
-        randAbility = CurrentAbilities[randAbilityID];
 
     }
 
@@ -63,11 +65,17 @@ public class AbilityManager : MonoBehaviour
             AbilityUse();
         }
         FlameTimer = FlameTimer + Time.deltaTime;
+        SlashTimer = SlashTimer + Time.deltaTime;
         //Disable Flame
         if (FlameTimer > 1.5)
         {
             gOFlame.GetComponent<SpriteRenderer>().enabled = false;
             gOFlame.GetComponent<Collider2D>().enabled = false;
+        }
+        if (SlashTimer > 0.12)
+        {
+            gOSlash.GetComponent<SpriteRenderer>().enabled = false;
+            gOSlash.GetComponent<Collider2D>().enabled = false;
         }
         //Stop Dash
         if (DashTimer < 0)
@@ -127,7 +135,9 @@ public class AbilityManager : MonoBehaviour
     {
         if(randAbility == "Slash")
         {
-            //SlashCode
+            gOSlash.GetComponent<SpriteRenderer>().enabled = true;
+            gOSlash.GetComponent<Collider2D>().enabled = true;
+            SlashTimer = 0;
         }
         else if (randAbility == "Dash")
         {
@@ -149,11 +159,11 @@ public class AbilityManager : MonoBehaviour
         }
         else if (randAbility == "Arrow")
         {
-            //ArrowCode
+            Instantiate(gOArrow, ArrowSpawn.transform.position, Rotator.rotation, gameObject.transform);
         }
         else if (randAbility == "Bard")
         {
-            //BardCode
+            
         }
         else if (randAbility == "Trap")
         {
