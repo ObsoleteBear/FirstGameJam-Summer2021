@@ -36,6 +36,8 @@ public class AbilityManager : MonoBehaviour
     public GameObject gOArrow;
     public GameObject gOBard;
     public GameObject gOTrap;
+    public GameObject partGravity;
+    public GameObject gOGravity;
     public GameObject gOBomb;
     //What ability is currently selected
     public string randAbility;
@@ -56,6 +58,8 @@ public class AbilityManager : MonoBehaviour
     //Bard variables
     public float BardTimer;
     public bool DoTimer;
+    //Gravity variables
+    public float GravityTimer;
     void Start()
     {
 
@@ -69,7 +73,7 @@ public class AbilityManager : MonoBehaviour
             UserInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         }
         AddToList();
-        if (Input.GetButtonDown("Ability"))
+        if (Input.GetButtonDown("Ability") && isEnemy == false)
         {
             AbilityUse();
         }else if(isEnemy == true && enemyTimer > 0)
@@ -80,6 +84,7 @@ public class AbilityManager : MonoBehaviour
         FlameTimer = FlameTimer + Time.deltaTime;
         SlashTimer = SlashTimer + Time.deltaTime;
         BardTimer = BardTimer + Time.deltaTime;
+        GravityTimer = GravityTimer + Time.deltaTime;
         enemyTimer = enemyTimer + Time.deltaTime;
         //Disable Flame
         if (FlameTimer > 1.5)
@@ -98,6 +103,10 @@ public class AbilityManager : MonoBehaviour
             gOBard.GetComponent<Collider2D>().enabled = false;
             cont.MoveSpeed = SpeedSave;
             DoTimer = false;
+        }
+        if (GravityTimer > 0.2)
+        {
+            gOGravity.GetComponent<Collider2D>().enabled = false;
         }
         //Stop Dash
         if (DashTimer < 0)
@@ -198,11 +207,13 @@ public class AbilityManager : MonoBehaviour
         }
         else if (randAbility == "Gravity")
         {
-            //GravityCode
+            Instantiate(partGravity, transform);
+            gOGravity.GetComponent<Collider2D>().enabled = true;
+            GravityTimer = 0;
         }
-        else if (randAbility == "AOEDamage")
+        else if (randAbility == "Bomb")
         {
-            //AOEDamageCode
+            Instantiate(gOBomb, transform.position, Quaternion.identity);
         }
 
         randomRangeList = CurrentAbilities.Count;
