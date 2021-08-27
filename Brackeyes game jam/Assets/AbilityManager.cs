@@ -8,6 +8,9 @@ public class AbilityManager : MonoBehaviour
     public Vector2 UserInput;
     public Controller cont;
     public Transform Rotator;
+    public bool isEnemy;
+    public float enemyTimer;
+    public float SpeedSave;
     //Ability Bools
     public bool Slash;
     public bool Dash;
@@ -16,7 +19,7 @@ public class AbilityManager : MonoBehaviour
     public bool Bard;
     public bool Trap;
     public bool Gravity;
-    public bool AOEDamage;
+    public bool Bomb;
     //AbilitySetToTrue Bools
     bool SlashSet = false;
     bool DashSet = false;
@@ -25,7 +28,7 @@ public class AbilityManager : MonoBehaviour
     bool BardSet = false;
     bool TrapSet = false;
     bool GravitySet = false;
-    bool AOEDamageSet = false;
+    bool BombSet = false;
     //Ability GameObjects
     public GameObject gOSlash;
     public GameObject gODash;
@@ -33,7 +36,7 @@ public class AbilityManager : MonoBehaviour
     public GameObject gOArrow;
     public GameObject gOBard;
     public GameObject gOTrap;
-    public GameObject gOAOEDamage;
+    public GameObject gOBomb;
     //What ability is currently selected
     public string randAbility;
     public int randomRangeList;
@@ -50,6 +53,9 @@ public class AbilityManager : MonoBehaviour
     public float DashTimer;
     //Arrow variables
     public GameObject ArrowSpawn;
+    //Bard variables
+    public float BardTimer;
+    public bool DoTimer;
     void Start()
     {
 
@@ -58,14 +64,23 @@ public class AbilityManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UserInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (isEnemy == false)
+        {
+            UserInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        }
         AddToList();
         if (Input.GetButtonDown("Ability"))
         {
             AbilityUse();
+        }else if(isEnemy == true && enemyTimer > 0)
+        {
+            AbilityUse();
+            enemyTimer = Random.Range(-5.2f, -3);
         }
         FlameTimer = FlameTimer + Time.deltaTime;
         SlashTimer = SlashTimer + Time.deltaTime;
+        BardTimer = BardTimer + Time.deltaTime;
+        enemyTimer = enemyTimer + Time.deltaTime;
         //Disable Flame
         if (FlameTimer > 1.5)
         {
@@ -76,6 +91,13 @@ public class AbilityManager : MonoBehaviour
         {
             gOSlash.GetComponent<SpriteRenderer>().enabled = false;
             gOSlash.GetComponent<Collider2D>().enabled = false;
+        }
+        if (BardTimer > 2 && DoTimer == true)
+        {
+            gOBard.GetComponent<SpriteRenderer>().enabled = false;
+            gOBard.GetComponent<Collider2D>().enabled = false;
+            cont.MoveSpeed = SpeedSave;
+            DoTimer = false;
         }
         //Stop Dash
         if (DashTimer < 0)
@@ -124,10 +146,10 @@ public class AbilityManager : MonoBehaviour
             CurrentAbilities.Add("Gravity");
             GravitySet = true;
         }
-        if (AOEDamage == true && AOEDamageSet == false)
+        if (Bomb == true && BombSet == false)
         {
-            CurrentAbilities.Add("AOEDamage");
-            AOEDamageSet = true;
+            CurrentAbilities.Add("Bomb");
+            BombSet = true;
         }
     }
 
@@ -163,11 +185,16 @@ public class AbilityManager : MonoBehaviour
         }
         else if (randAbility == "Bard")
         {
-            
+            gOBard.GetComponent<SpriteRenderer>().enabled = true;
+            gOBard.GetComponent<Collider2D>().enabled = true;
+            BardTimer = 0;
+            SpeedSave = cont.MoveSpeed;
+            cont.MoveSpeed = 3.5f;
+            DoTimer = true;
         }
         else if (randAbility == "Trap")
         {
-            //TrapCode
+            Instantiate(gOTrap, ArrowSpawn.transform.position, Quaternion.identity);
         }
         else if (randAbility == "Gravity")
         {

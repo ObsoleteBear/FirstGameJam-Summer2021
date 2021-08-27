@@ -24,12 +24,12 @@ public class FlameBoi : MonoBehaviour
     {
         FlameCol.enabled = true;
         FlameRend.enabled = true;
-        cont.Speed = 3.5f;
+        cont.MoveSpeed = 4.5f;
     }
     void StopShoot()
     {
         FlameCol.enabled = false;
         FlameRend.enabled = false;
-        cont.Speed = 7f;
+        cont.MoveSpeed = 7f;
     }
 }

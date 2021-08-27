@@ -10,6 +10,7 @@ TagManager:
   - PlayerFlame
   - PlayerAttack
   - DoorTrigger
+  - Trap
   layers:
   - Default
   - TransparentFX
