@@ -217,7 +217,7 @@ public class AbilityManager : MonoBehaviour
         }
 
         randomRangeList = CurrentAbilities.Count;
-        randAbilityID = Random.Range(0, randomRangeList);
+        randAbilityID = Random.Range(0, randomRangeList - 1);
         randAbility = CurrentAbilities[randAbilityID];
     }
 }

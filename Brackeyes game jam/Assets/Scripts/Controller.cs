@@ -17,14 +17,49 @@ public class Controller : MonoBehaviour
     public float speedSave;
     public Vector3 direction;
     public Vector2 UserInput;
+    public Animator animate;
+    public float IdleTimer;
+    public SpriteRenderer spriteRend;
+    private void Start()
+    {
+        spriteRend = GetComponent<SpriteRenderer>();
+        animate = GetComponent<Animator>();
+    }
     void Update()
     {
         direction = Player.transform.position - transform.position;
         direction.Normalize();
+        UserInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         if (movementEnabled == true && isEnemy == false)
         {
-            UserInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
+            if (UserInput != Vector2.zero)
+            {
+                animate.SetBool("Moving", true);
+            }
+            else
+            {
+                animate.SetBool("Moving", false);
+            }
+            if (UserInput.x < 0)
+            {
+                spriteRend.flipX = true;
+            }
+            if (UserInput.x > 0)
+            {
+                spriteRend.flipX = false;
+            }
+            if (UserInput == Vector2.zero)
+            {
+                IdleTimer = IdleTimer + Time.deltaTime;
+                if (IdleTimer > 4)
+                {
+                    animate.SetBool("Sit", true);
+                }
+            }
+            else
+            {
+                IdleTimer = 0;
+            }
         }
         if (isEnemy == true)
         {
