@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4723722833664503047}
   m_Layer: 0
   m_Name: Flame
-  m_TagString: PlayerAttack
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,8 +56,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029785392895312122}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4066666, y: 0, z: 0}
-  m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1}
+  m_LocalPosition: {x: 0.8, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 3247263633614319545}
   m_RootOrder: 2
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029785392895312122}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -100,9 +100,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1097005373
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5716b81f0bb93e94fae45e5c4ddc1054, type: 3}
   m_Color: {r: 1, g: 0.7019608, b: 0.40392157, a: 1}
   m_FlipX: 1
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 964580979890102237}
   m_Layer: 0
   m_Name: Slash
-  m_TagString: PlayerAttack
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,9 +250,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1097005373
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0f61cb2bb26d7d14e9908cdacb5873be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -275,12 +275,13 @@ GameObject:
   - component: {fileID: 2552083178445919565}
   - component: {fileID: 2552083178445919566}
   - component: {fileID: 2552083178445919567}
-  - component: {fileID: 2552083178445919560}
   - component: {fileID: 7463084159216523547}
   - component: {fileID: 6895778441429190811}
+  - component: {fileID: 3627050038781798169}
+  - component: {fileID: 1132736548}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -292,9 +293,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2552083178445919561}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.59, y: -2.91, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_Children:
   - {fileID: 3247263633614319545}
   - {fileID: 1678498280269003518}
@@ -340,11 +341,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1097005373
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.62352943, g: 0.3098039, b: 0.35210145, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2deb13fc62654aa44b3ffdfd567c4c90, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -367,40 +368,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 4
-  m_AngularDrag: 4
+  m_LinearDrag: 2
+  m_AngularDrag: 2
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &2552083178445919560
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2552083178445919561}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &7463084159216523547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,9 +392,13 @@ MonoBehaviour:
   UserInput: {x: 0, y: 0}
   cont: {fileID: 6895778441429190811}
   Rotator: {fileID: 3247263633614319545}
-  isEnemy: 0
+  isEnemy: 1
   enemyTimer: 0
-  SpeedSave: 6
+  Player: {fileID: 0}
+  SpeedSave: 3.5
+  AttackTimer: 0
+  animate: {fileID: 0}
+  CastDone: 0
   Slash: 0
   Dash: 0
   Flame: 0
@@ -431,18 +410,18 @@ MonoBehaviour:
   gOSlash: {fileID: 2262923709916277816}
   gODash: {fileID: 8161103556474072376}
   gOFlame: {fileID: 2029785392895312122}
-  gOArrow: {fileID: 1463610031413900562, guid: c51af91eb0cb67f4ba5bdfebea102cd6, type: 3}
+  gOArrow: {fileID: 1463610031413900562, guid: 71fde1e2bd8e617419b82f3dfb5981b0, type: 3}
   gOBard: {fileID: 5162765122578664337}
   gOTrap: {fileID: 8556340912060378271, guid: c9a5ef5f49244fc4c862268ad6a012da, type: 3}
   partGravity: {fileID: 8088213642973746342, guid: 195a1a8820910df4db51447727035845, type: 3}
   gOGravity: {fileID: 7537369800614606847}
-  gOBomb: {fileID: 0}
+  gOBomb: {fileID: 6035873758058754727, guid: 0a4ffa796adee184188a4b670798d830, type: 3}
   randAbility: 
   randomRangeList: 0
   randAbilityID: 0
   CurrentAbilities: []
   DashForceAdded: 0
-  DashSpeed: 50
+  DashSpeed: 2.5
   DashTimer: 0
   ArrowSpawn: {fileID: 1043309967842746203}
   BardTimer: 0
@@ -460,16 +439,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39d96d3c57028f4db5609474ef023ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 6
+  MoveSpeed: 3.5
   rb: {fileID: 2552083178445919567}
   isFacingRight: 1
   movementEnabled: 1
   isEnemy: 1
   aiRange: 19
   Player: {fileID: 0}
-  speedSave: 0
+  speedSave: 3.5
   direction: {x: 0, y: 0, z: 0}
   UserInput: {x: 0, y: 0}
+  animate: {fileID: 0}
+  IdleTimer: 0
+  spriteRend: {fileID: 0}
+  GameManage: {fileID: 0}
+--- !u!95 &3627050038781798169
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552083178445919561}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b614bff166b015448645fdb6a88ceb2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!60 &1132736548
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552083178445919561}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.10816528, y: 0.31377542}
+      - {x: 0.0074438415, y: 0.31466362}
+      - {x: 0.007583849, y: 0.4058286}
+      - {x: -0.30420774, y: 0.40169063}
+      - {x: -0.3036312, y: 0.30463988}
+      - {x: -0.40316296, y: 0.30226105}
+      - {x: -0.4033813, y: 0.19521625}
+      - {x: -0.29915467, y: 0.19775227}
+      - {x: -0.3091847, y: 0.109583646}
+      - {x: -0.3060199, y: 0.0021383092}
+      - {x: -0.30475295, y: -0.004722937}
+      - {x: -0.21095598, y: -0.007575715}
+      - {x: -0.211642, y: -0.4031843}
+      - {x: 0.21319495, y: -0.40537357}
+      - {x: 0.21546696, y: -0.009546585}
+      - {x: 0.30558535, y: -0.010601536}
+      - {x: 0.3054614, y: 0.10809281}
+      - {x: 0.20905444, y: 0.11077604}
+      - {x: 0.20926346, y: 0.20949335}
+      - {x: 0.11039426, y: 0.21078818}
 --- !u!1 &5162765122578664337
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +530,7 @@ GameObject:
   - component: {fileID: 443068538260128829}
   m_Layer: 0
   m_Name: Notes
-  m_TagString: Untagged
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -497,7 +544,7 @@ Transform:
   m_GameObject: {fileID: 5162765122578664337}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.125, y: 1.125, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 2552083178445919565}
   m_RootOrder: 1
@@ -509,7 +556,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5162765122578664337}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -540,8 +587,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1097005373
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d8ee40ea8a06a7740a6a9e4b6b64d591, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -561,7 +608,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5162765122578664337}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -767,7 +814,7 @@ GameObject:
   - component: {fileID: 8371068450791465626}
   m_Layer: 0
   m_Name: GravityPush
-  m_TagString: PlayerGravity
+  m_TagString: EnemyGravity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -824,8 +871,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1097005373
+  m_SortingLayer: 2
   m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.4764151, g: 0.8730727, b: 1, a: 0.22745098}
@@ -867,7 +914,7 @@ GameObject:
   - component: {fileID: 4230952081331388334}
   m_Layer: 0
   m_Name: Dash
-  m_TagString: PlayerAttack
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -950,8 +997,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1097005373
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d0c24a62f6b70094d9ce58e36e5a5e3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

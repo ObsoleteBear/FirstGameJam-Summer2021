@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 8664432469080250083}
   m_Layer: 0
   m_Name: Notes
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 4160750559597812047}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.125, y: 1.125, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 6733713984769410963}
   m_RootOrder: 1
@@ -425,7 +425,7 @@ Transform:
   m_GameObject: {fileID: 6733713984769410967}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_Children:
   - {fileID: 5983241019492547943}
   - {fileID: 7589443171869763616}
@@ -504,12 +504,13 @@ MonoBehaviour:
   isEnemy: 0
   aiRange: 0
   Player: {fileID: 6733713984769410967}
-  speedSave: 0
+  speedSave: 7
   direction: {x: 0, y: 0, z: 0}
   UserInput: {x: 0, y: 0}
   animate: {fileID: 0}
   IdleTimer: 0
   spriteRend: {fileID: 0}
+  GameManage: {fileID: 0}
 --- !u!50 &6733713984769410961
 Rigidbody2D:
   serializedVersion: 4
@@ -523,8 +524,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 4
-  m_AngularDrag: 4
+  m_LinearDrag: 8
+  m_AngularDrag: 8
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -549,14 +550,18 @@ MonoBehaviour:
   Rotator: {fileID: 5983241019492547943}
   isEnemy: 0
   enemyTimer: 0
+  Player: {fileID: 0}
   SpeedSave: 7
-  Slash: 0
-  Dash: 0
-  Flame: 0
-  Arrow: 0
-  Bard: 0
-  Trap: 0
-  Gravity: 0
+  AttackTimer: 2.2
+  animate: {fileID: 0}
+  CastDone: 0
+  Slash: 1
+  Dash: 1
+  Flame: 1
+  Arrow: 1
+  Bard: 1
+  Trap: 1
+  Gravity: 1
   Bomb: 1
   gOSlash: {fileID: 7025512132025810662}
   gODash: {fileID: 1106257550960394214}
@@ -567,12 +572,12 @@ MonoBehaviour:
   partGravity: {fileID: 8088213642973746342, guid: 195a1a8820910df4db51447727035845, type: 3}
   gOGravity: {fileID: 6845189823109185172}
   gOBomb: {fileID: 6035873758058754727, guid: 0a4ffa796adee184188a4b670798d830, type: 3}
-  randAbility: 
+  randAbility: Slash
   randomRangeList: 0
   randAbilityID: 0
   CurrentAbilities: []
   DashForceAdded: 0
-  DashSpeed: 50
+  DashSpeed: 20
   DashTimer: 0
   ArrowSpawn: {fileID: 8098232936461110661}
   BardTimer: 0
@@ -843,7 +848,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1097005373
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0f61cb2bb26d7d14e9908cdacb5873be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -881,8 +886,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7076025964576854564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4066666, y: 0, z: 0}
-  m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1}
+  m_LocalPosition: {x: 0.8, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 5983241019492547943}
   m_RootOrder: 2
@@ -927,7 +932,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1097005373
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5716b81f0bb93e94fae45e5c4ddc1054, type: 3}
   m_Color: {r: 1, g: 0.7019608, b: 0.40392157, a: 1}
   m_FlipX: 1

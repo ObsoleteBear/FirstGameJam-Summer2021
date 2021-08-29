@@ -13,6 +13,11 @@ TagManager:
   - Trap
   - PlayerGravity
   - Explosion
+  - EnemyGravity
+  - EnemyAttack
+  - Enemy
+  - GameManager
+  - Transition
   layers:
   - Default
   - TransparentFX

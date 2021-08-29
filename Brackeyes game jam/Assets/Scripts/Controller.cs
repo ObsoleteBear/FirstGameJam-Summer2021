@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using JetBrains.Annotations;
 
 public class Controller : MonoBehaviour
 {
@@ -20,10 +21,13 @@ public class Controller : MonoBehaviour
     public Animator animate;
     public float IdleTimer;
     public SpriteRenderer spriteRend;
-    private void Start()
+    public GameManager GameManage;
+    private void Awake()
     {
         spriteRend = GetComponent<SpriteRenderer>();
         animate = GetComponent<Animator>();
+        Player = GameObject.FindGameObjectWithTag("Player");
+        GameManage = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     void Update()
     {
@@ -35,6 +39,7 @@ public class Controller : MonoBehaviour
             if (UserInput != Vector2.zero)
             {
                 animate.SetBool("Moving", true);
+                animate.SetBool("Sit", false);
             }
             else
             {
@@ -61,16 +66,20 @@ public class Controller : MonoBehaviour
                 IdleTimer = 0;
             }
         }
-        if (isEnemy == true)
+        if (isEnemy == true && Player.GetComponent<Controller>().enabled == true)
         {
             if (Vector2.Distance((Vector2)transform.position, (Vector2)Player.transform.position) < aiRange)
             {
                 if (Vector2.Distance(new Vector2(transform.position.x, transform.position.y), new Vector2(Player.transform.position.x, Player.transform.position.y)) > 2)
                 {
                     movement = direction;
-                }else
+                    animate.SetBool("Moving", true);
+
+                }
+                else
                 {
                     movement = Vector2.zero;
+                    animate.SetBool("Moving", false);
                 }
             }
         }
@@ -79,11 +88,18 @@ public class Controller : MonoBehaviour
     {
         if (isEnemy == true)
         {
-            rb.AddForce(movement * MoveSpeed * 4);
+            rb.AddForce(movement * MoveSpeed * 6);
+            if (Player.transform.position.x < transform.position.x)
+            {
+                spriteRend.flipX = true;
+            }else if (Player.transform.position.x > transform.position.x)
+            {
+                spriteRend.flipX = false;
+            }
         }
         else
         {
-            rb.AddForce(UserInput * MoveSpeed * 4);
+            rb.AddForce(UserInput * MoveSpeed * 8);
         }
     }
 
@@ -91,9 +107,11 @@ public class Controller : MonoBehaviour
     {
         if (collision.tag == "Trap" && collision.GetComponent<TrapAttack>().TrapSprung == false)
         {
-            speedSave = MoveSpeed;
             MoveSpeed = 1.5f;
             Debug.Log("Amogus");
+        }else
+        {
+            MoveSpeed = 7;
         }
         if (isEnemy == true && collision.tag == "PlayerGravity")
         {
@@ -105,14 +123,55 @@ public class Controller : MonoBehaviour
             // This will push back the player
             rb.AddForce(dir * 420);
         }
+        else if (isEnemy == false && collision.tag == "EnemyGravity")
+        {
+            // Calculate Angle Between the collision point and the player
+            Vector3 dir = collision.transform.position - transform.position;
+            // We then get the opposite (-Vector3) and normalize it
+            dir = -dir.normalized;
+            // And finally we add force in the direction of dir and multiply it by force. 
+            // This will push back the player
+            rb.AddForce(dir * 420);
+        }
+        if (collision.tag == "Explosion")
+        {
+            if (isEnemy == true)
+            {
+                EnemyDeath();
+                animate.SetBool("Dead", true);
+            }
+            else
+            {
+                GameManage.PlayerDeath(gameObject);
+                animate.SetBool("Dead", true);
+            }
+        }
+        else if (collision.tag == "PlayerAttack" && isEnemy == true)
+        {
+            //Enemy Death
+            EnemyDeath();
+            animate.SetBool("Dead", true);
+            Destroy(gameObject);
+        }
+        else if (collision.tag == "EnemyAttack" && isEnemy == false)
+        {
+            //Player Death
+            GameManage.PlayerDeath(gameObject);
+            animate.SetBool("Dead", true);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Trap")
+        if (collision.tag == "Trap" && collision.GetComponent<TrapAttack>().CaughtObject == gameObject)
         {
             MoveSpeed = speedSave;
             Debug.Log("Abogus");
         }
     }
+    public void EnemyDeath() 
+    {
+        GameManage.EnemyDeath(gameObject);
+    }
 }
+
 

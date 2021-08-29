@@ -7,12 +7,13 @@ public class AimRotation : MonoBehaviour
     public bool isEnemy;
     public GameObject Player;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (gameObject.GetComponentInParent<Controller>().isEnemy == true)
         {
             isEnemy = true;
         }
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ public class AimRotation : MonoBehaviour
         }else
         {
             Vector3 targetPosition = Player.transform.position;
-            Vector3 dir = targetPosition - this.transform.position;
+            Vector3 dir = targetPosition - transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             this.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
